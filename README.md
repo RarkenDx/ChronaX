@@ -114,3 +114,13 @@ Modern API design instead of static legacy endpoints
 [ ] Multi-chain anchoring engine
 
 [ ] Public Beta Release
+
+---
+
+## 📬 Contact
+
+**Developer:** Thopaz Arief Malino
+**Email:** thopazariefm@hotmail.com
+
+**Want to contribute?**
+Open an issue or submit a pull request anytime.
