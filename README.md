@@ -41,3 +41,75 @@ ChronaX introduces a **multi-chain, tamper-proof, and cost-efficient** timestamp
 ---
 
 ## 📐 System Architecture (Overview)
+
+User → Hash Generator → ChronaX Validator → Multi-Chain Anchor Engine → Public Proof Layer
+
+- **Hash Generator** — Generates secure SHA-256 fingerprints.  
+- **Validator** — Ensures timestamp validity and prevents replay attacks.  
+- **Anchor Engine** — Broadcasts timestamp proofs to multiple blockchains.  
+- **Public Proof Layer** — Anyone can verify the proof forever.
+
+---
+
+## 🚀 How It Works  
+1. User submits text or file  
+2. ChronaX converts it into a **unique hash**  
+3. The hash is anchored on multiple blockchains  
+4. The user receives:  
+   - Timestamp ID  
+   - Absolute time  
+   - Data hash  
+   - On-chain verification proofs  
+
+---
+
+## 📄 API Example
+
+### Request
+```bash
+POST /api/v1/timestamp
+
+{
+  "data": "your-text-or-file-hash"
+}
+```
+Response
+```
+{
+  "status": "success",
+  "timestamp_id": "cxa_8234asd98sa",
+  "hash": "5f2d1d0b44d78e9...",
+  "anchored_on": ["Ethereum", "BSC", "Arbitrum"],
+  "verified_at": "2025-01-01T12:40:00Z"
+}
+```
+
+🛡️ Advantages Over Legacy Timestamp Systems
+
+No single blockchain dependency → avoids central points of failure
+
+Near-zero cost → more accessible than traditional PoE systems
+
+High accuracy → blockchain time + NTP synchronization
+
+Eternal verification → proofs remain valid forever
+
+Modern API design instead of static legacy endpoints
+
+
+
+---
+
+🧪 Project Status
+
+[x] Core architecture
+
+[ ] Public API
+
+[ ] User dashboard
+
+[ ] SDKs (Python, JS)
+
+[ ] Multi-chain anchoring engine
+
+[ ] Public Beta Release
