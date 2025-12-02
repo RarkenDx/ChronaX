@@ -65,7 +65,7 @@ User → Hash Generator → ChronaX Validator → Multi-Chain Anchor Engine → 
 
 ## 📄 API Example
 
-### Request
+**Request**
 ```
 POST /api/v1/timestamp
 
@@ -73,7 +73,7 @@ POST /api/v1/timestamp
   "data": "your-text-or-file-hash"
 }
 ```
-### Response
+**Response**
 ```
 {
   "status": "success",
@@ -101,9 +101,9 @@ Modern API design instead of static legacy endpoints
 
 ---
 
-🧪 Project Status
+## 🧪 Project Status
 
-[x] Core architecture
+**[x] Core architecture**
 
 [ ] Public API
 
