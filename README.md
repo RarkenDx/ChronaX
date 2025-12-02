@@ -66,14 +66,14 @@ User → Hash Generator → ChronaX Validator → Multi-Chain Anchor Engine → 
 ## 📄 API Example
 
 ### Request
-```bash
+```
 POST /api/v1/timestamp
 
 {
   "data": "your-text-or-file-hash"
 }
 ```
-Response
+### Response
 ```
 {
   "status": "success",
@@ -83,8 +83,9 @@ Response
   "verified_at": "2025-01-01T12:40:00Z"
 }
 ```
+---
 
-🛡️ Advantages Over Legacy Timestamp Systems
+## 🛡️ Advantages Over Legacy Timestamp Systems
 
 No single blockchain dependency → avoids central points of failure
 
