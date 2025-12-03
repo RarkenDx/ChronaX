@@ -1,10 +1,16 @@
-# ChronaX⏱️
-ChronaX is a next-generation multi-chain timestamp and proof-of-existence protocol. It offers tamper-proof data anchoring, zero-cost submissions, and long-term verifiable proofs secured across Ethereum, L2s, and low-cost chains.
+<div align="center">
 
-**Next-Generation Proof-of-Existence & Timestamp Integrity Layer**
+# ChronaX ⏱️
 
-**Author:** Thopaz Arief Malino  
-**Email:** thopazariefm@hotmail.com  
+**Next-Generation Multi-Chain Timestamp & Proof-of-Existence Protocol**
+
+> *Tamper-proof data anchoring • Zero-cost submissions • Verifiable proofs across Ethereum, L2s & low-cost chains*
+
+![ChronaX Logo](https://via.placeholder.com/800x200/1e40af/ffffff?text=ChronaX)
+
+**Immutable Timestamp Integrity Layer**
+
+</div>
 
 ---
 
