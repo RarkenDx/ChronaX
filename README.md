@@ -104,7 +104,7 @@ Modern API design instead of static legacy endpoints
 
 ## 🧪 Project Status
 
-[x] Core architecture  ✅ 
+**[x] Core architecture**  
 [ ] Testing & Security Audit  🔄 (KRUSIAL SEKARANG)
 [ ] Public API         ⚠️ (Prioritas #1 - endpoint /api/v1/timestamp)
 [ ] Relayer Service    🔥 (Zero-cost mechanism - batch/aggregator)
@@ -112,6 +112,7 @@ Modern API design instead of static legacy endpoints
 [ ] User dashboard     🎨
 [ ] Multi-chain engine tuning  ⚙️ (Optimasi L2/low-cost chains)
 [ ] Public Beta Release 🚀
+
 ---
 
 ## 📬 Contact
