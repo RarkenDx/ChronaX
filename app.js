@@ -16,7 +16,7 @@ let provider, signer, contract;
 // AUTO CONNECT
 async function autoConnect() {
     if (window.ethereum) {
-        provider = new ethers.BrowserProvider(window.ethereum);
+        provider = new ethers.Web3Provider(window.ethereum);
         signer = await provider.getSigner();
         contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
     }
@@ -27,7 +27,7 @@ autoConnect();
 document.getElementById("connectBtn").onclick = async () => {
     if (!window.ethereum) return alert("Install Metamask!");
 
-    provider = new ethers.BrowserProvider(window.ethereum);
+    provider = new ethers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     signer = await provider.getSigner();
     contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
