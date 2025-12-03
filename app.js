@@ -50,7 +50,7 @@ document.getElementById("uploadBtn").onclick = async () => {
     const hash = await hashFile(file);
     document.getElementById("fileHash").innerText = "Hash: " + hash;
 
-    const tx = await contract.registerFile(hash);
+    const tx = await contract.Register(hash);
     await tx.wait();
 
     alert("File registered on-chain!");
