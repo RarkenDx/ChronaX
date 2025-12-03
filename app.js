@@ -1,3 +1,7 @@
+const CONTRACT_ADDRESS = "0xF147b0A94c05F56942e2da099EeBeEB205376997"; // ganti sesuai deploy
+let provider, signer, contract;
+let currentHash = null;
+
 // AUTO CONNECT
 async function autoConnect() {
     if (window.ethereum) {
@@ -11,35 +15,47 @@ async function autoConnect() {
 }
 autoConnect();
 
-// BUTTON CONNECT
+// CONNECT BUTTON
 document.getElementById("connectBtn").onclick = async () => {
     if (!window.ethereum) return alert("Install Metamask!");
-
     provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     signer = provider.getSigner();
     contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
-
     alert("Wallet connected!");
 };
 
-// HASH FILE
-async function hashFile(file) {
-    const buffer = await file.arrayBuffer();
-    const hash = ethers.utils.keccak256(new Uint8Array(buffer));
-    return hash;
-}
-
-// UPLOAD BUTTON
-document.getElementById("uploadBtn").onclick = async () => {
+// HASH BUTTON
+document.getElementById("hashBtn").onclick = async () => {
     const file = document.getElementById("fileInput").files[0];
     if (!file) return alert("Select a file first!");
+    const buffer = await file.arrayBuffer();
+    currentHash = ethers.utils.keccak256(new Uint8Array(buffer));
+    document.getElementById("generatedHash").innerText = currentHash;
+};
 
-    const hash = await hashFile(file);
-    document.getElementById("fileHash").innerText = "Hash: " + hash;
+// REGISTER BUTTON
+document.getElementById("registerBtn").onclick = async () => {
+    if (!contract) return alert("Connect wallet first!");
+    if (!currentHash) return alert("Generate hash first!");
+    try {
+        const tx = await contract.register(currentHash);
+        await tx.wait();
+        alert("File registered on-chain!");
+    } catch(e) {
+        alert("Error: " + e.message);
+    }
+};
 
-    const tx = await contract.registerFile(hash); // perbaikan nama fungsi
-    await tx.wait();
-
-    alert("File registered on-chain!");
+// VERIFY BUTTON
+document.getElementById("verifyBtn").onclick = async () => {
+    if (!contract) return alert("Connect wallet first!");
+    const hash = document.getElementById("verifyInput").value;
+    if (!hash) return alert("Enter hash first!");
+    try {
+        const exists = await contract.isRegistered(hash);
+        document.getElementById("verifyResult").innerText = exists ? "✅ Hash exists on-chain" : "❌ Hash not found";
+    } catch(e) {
+        alert("Error: " + e.message);
+    }
 };
