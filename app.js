@@ -1,4 +1,4 @@
-const CONTRACT_ADDRESS = "0x...";   // masukkan address kontrak ChronaXRegistry
+const CONTRACT_ADDRESS = "0xF147b0A94c05F56942e2da099EeBeEB205376997";   // masukkan address kontrak ChronaXRegistry
 const ABI = [
     {
         "inputs": [
