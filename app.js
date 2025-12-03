@@ -1,4 +1,31 @@
 const CONTRACT_ADDRESS = "0xF147b0A94c05F56942e2da099EeBeEB205376997"; // ganti sesuai deploy
+const ABI = [
+    {
+        "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"}],
+        "name": "register",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"}],
+        "name": "isRegistered",
+        "outputs": [{"internalType":"bool","name":"","type":"bool"}],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"}],
+        "name": "getRecord",
+        "outputs": [
+            {"internalType":"address","name":"","type":"address"},
+            {"internalType":"uint256","name":"","type":"uint256"}
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+];
+
 let provider, signer, contract;
 let currentHash = null;
 
