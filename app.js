@@ -1,4 +1,4 @@
-const CONTRACT_ADDRESS = "0xF147b0A94c05F56942e2da099EeBeEB205376997"; // ganti sesuai deploy
+const CONTRACT_ADDRESS = "0xf147b0a94c05f56942e2da099eebeeb205376997"; // ganti sesuai deploy
 const ABI = [
     {
         "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"}],
