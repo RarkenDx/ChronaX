@@ -48,7 +48,7 @@ User → Hash Generator → ChronaX Validator → Multi-Chain Anchor Engine → 
 - **Hash Generator** — Generates secure SHA-256 fingerprints.  
 - **Validator** — Ensures timestamp validity and prevents replay attacks.  
 - **Anchor Engine** — Broadcasts timestamp proofs to multiple blockchains.  
-- **Public Proof Layer** — Anyone can verify the proof forever.
+- **Public Proof Layer7** — Anyone can verify the proof forever.
 
 ---
 
@@ -104,18 +104,14 @@ Modern API design instead of static legacy endpoints
 
 ## 🧪 Project Status
 
-**[x] Core architecture**
-
-[ ] Public API
-
-[ ] User dashboard
-
-[ ] SDKs (Python, JS)
-
-[ ] Multi-chain anchoring engine
-
-[ ] Public Beta Release
-
+[x] Core architecture  ✅ 
+[ ] Testing & Security Audit  🔄 (KRUSIAL SEKARANG)
+[ ] Public API         ⚠️ (Prioritas #1 - endpoint /api/v1/timestamp)
+[ ] Relayer Service    🔥 (Zero-cost mechanism - batch/aggregator)
+[ ] SDKs (Python, JS)  🛠️
+[ ] User dashboard     🎨
+[ ] Multi-chain engine tuning  ⚙️ (Optimasi L2/low-cost chains)
+[ ] Public Beta Release 🚀
 ---
 
 ## 📬 Contact
