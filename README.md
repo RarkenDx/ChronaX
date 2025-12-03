@@ -4,7 +4,7 @@
 
 **Next-Generation Multi-Chain Timestamp & Proof-of-Existence Protocol**
 
-> *Tamper-proof data anchoring • Batch-cost submissions • Verifiable proofs across Ethereum, L2s & low-cost chains*
+> *Tamper-proof data anchoring • Batch-efficient submissions • Verifiable proofs across Ethereum, L2s & low-cost chains*
 
 ![ChronaX Logo](https://via.placeholder.com/800x200/1e40af/ffffff?text=ChronaX)
 
