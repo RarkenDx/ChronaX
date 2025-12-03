@@ -111,12 +111,19 @@ Modern API design instead of static legacy endpoints
 ## 🧪 Project Status
 
 **[x] Core architecture**  
+
 [ ] Testing & Security Audit  🔄
+
 [ ] Public API ⚠️ 
+
 [ ] Relayer Service 🔥 
+
 [ ] SDKs (Python, JS)  🛠️
+
 [ ] User dashboard 🎨
+
 [ ] Multi-chain engine tuning  ⚙️
+
 [ ] Public Beta Release 🚀
 
 ---
