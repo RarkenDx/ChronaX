@@ -1,4 +1,4 @@
-const CONTRACT_ADDRESS = "0x4F9eb9FEfF297EC08297184e9B4f6AAD8b90305b"; // Ganti sesuai deploy proxy address
+const CONTRACT_ADDRESS = "0xb45982BD0398e0441d58942599B70DC36C1f3B70"; // Ganti sesuai deploy proxy address
 const ABI = [
     {
         "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"}],
