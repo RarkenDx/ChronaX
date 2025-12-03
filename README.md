@@ -33,8 +33,8 @@ ChronaX introduces a **multi-chain, tamper-proof, and cost-efficient** timestamp
 - **Multi-Chain Anchoring**  
   ChronaX anchors timestamps to several blockchains for redundancy and trust.
 
-- **Zero-Cost Submission**  
-  Users can submit data proofs without paying direct gas fees.
+- **Batch-efficient Submission**  
+  Maybe zero-cost relayer coming.
 
 - **Privacy-Friendly Hash Proofs**  
   Only hashed data is stored—your documents remain private.
