@@ -1,8 +1,22 @@
-const CONTRACT_ADDRESS = "0x4f9eb9feff297ec08297184e9b4f6aad8b90305b"; // ganti sesuai deploy
+const CONTRACT_ADDRESS = "0x4f9eb9feff297ec08297184e9b4f6aad8b90305b"; // Ganti sesuai deploy proxy address
 const ABI = [
     {
         "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"}],
         "name": "register",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{"internalType": "bytes32[]","name":"docHashes","type":"bytes32[]"}],
+        "name": "batchRegister",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{"internalType": "bytes32","name":"docHash","type":"bytes32"},{"internalType": "address","name":"newOwner","type":"address"}],
+        "name": "transferOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -61,7 +75,7 @@ document.getElementById("hashBtn").onclick = async () => {
     document.getElementById("generatedHash").innerText = currentHash;
 };
 
-// REGISTER BUTTON
+// REGISTER BUTTON (Single Hash)
 document.getElementById("registerBtn").onclick = async () => {
     if (!contract) return alert("Connect wallet first!");
     if (!currentHash) return alert("Generate hash first!");
@@ -69,6 +83,38 @@ document.getElementById("registerBtn").onclick = async () => {
         const tx = await contract.register(currentHash);
         await tx.wait();
         alert("File registered on-chain!");
+    } catch(e) {
+        alert("Error: " + e.message);
+    }
+};
+
+// BATCH REGISTER BUTTON (Multiple Hashes)
+document.getElementById("batchRegisterBtn").onclick = async () => {
+    if (!contract) return alert("Connect wallet first!");
+    const hashesInput = document.getElementById("batchInput").value;
+    if (!hashesInput) return alert("Enter hashes first (comma-separated)!");
+    const hashes = hashesInput.split(',').map(h => h.trim()).filter(h => h.startsWith('0x') && h.length === 66); // Validasi basic
+    if (hashes.length === 0) return alert("Invalid hashes!");
+    try {
+        const tx = await contract.batchRegister(hashes);
+        await tx.wait();
+        alert("Batch registered on-chain!");
+    } catch(e) {
+        alert("Error: " + e.message);
+    }
+};
+
+// TRANSFER OWNERSHIP BUTTON
+document.getElementById("transferBtn").onclick = async () => {
+    if (!contract) return alert("Connect wallet first!");
+    const hash = document.getElementById("transferHashInput").value;
+    const newOwner = document.getElementById("transferAddressInput").value;
+    if (!hash || !newOwner) return alert("Enter hash and new owner address!");
+    if (!ethers.utils.isAddress(newOwner)) return alert("Invalid address!");
+    try {
+        const tx = await contract.transferOwnership(hash, newOwner);
+        await tx.wait();
+        alert("Ownership transferred!");
     } catch(e) {
         alert("Error: " + e.message);
     }
@@ -86,3 +132,4 @@ document.getElementById("verifyBtn").onclick = async () => {
         alert("Error: " + e.message);
     }
 };
+        
