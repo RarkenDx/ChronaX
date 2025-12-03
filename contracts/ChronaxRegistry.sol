@@ -37,7 +37,7 @@ contract ChronaXRegistryV2 is Initializable, UUPSUpgradeable, OwnableUpgradeable
      * @param _priceFeed Address of Chainlink price feed for timestamp
      */
     function initialize(address _priceFeed) public initializer {
-        __Ownable_init();
+        __Ownable_init(msg.sender);
         __UUPSUpgradeable_init();
         priceFeed = AggregatorV3Interface(_priceFeed);
     }
