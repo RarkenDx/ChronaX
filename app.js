@@ -1,24 +1,12 @@
-const CONTRACT_ADDRESS = "0xF147b0A94c05F56942e2da099EeBeEB205376997";   // masukkan address kontrak ChronaXRegistry
-const ABI = [
-    {
-        "inputs": [
-            {"internalType": "bytes32","name": "fileHash","type": "bytes32"}
-        ],
-        "name": "registerFile",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }
-];
-
-let provider, signer, contract;
-
 // AUTO CONNECT
 async function autoConnect() {
     if (window.ethereum) {
-        provider = new ethers.Web3Provider(window.ethereum);
-        signer = await provider.getSigner();
-        contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        const accounts = await provider.listAccounts();
+        if (accounts.length > 0) {
+            signer = provider.getSigner();
+            contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
+        }
     }
 }
 autoConnect();
@@ -27,9 +15,9 @@ autoConnect();
 document.getElementById("connectBtn").onclick = async () => {
     if (!window.ethereum) return alert("Install Metamask!");
 
-    provider = new ethers.Web3Provider(window.ethereum);
+    provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
-    signer = await provider.getSigner();
+    signer = provider.getSigner();
     contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
 
     alert("Wallet connected!");
@@ -38,7 +26,7 @@ document.getElementById("connectBtn").onclick = async () => {
 // HASH FILE
 async function hashFile(file) {
     const buffer = await file.arrayBuffer();
-    const hash = ethers.keccak256(new Uint8Array(buffer));
+    const hash = ethers.utils.keccak256(new Uint8Array(buffer));
     return hash;
 }
 
@@ -50,7 +38,7 @@ document.getElementById("uploadBtn").onclick = async () => {
     const hash = await hashFile(file);
     document.getElementById("fileHash").innerText = "Hash: " + hash;
 
-    const tx = await contract.Register(hash);
+    const tx = await contract.registerFile(hash); // perbaikan nama fungsi
     await tx.wait();
 
     alert("File registered on-chain!");
