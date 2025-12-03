@@ -1,26 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ChronaX MVP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronaX — Timestamp MVP</title>
+
+    <!-- Ethers.js -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.1/dist/ethers.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { font-size: 32px; margin-bottom: 30px; }
+        .card {
+            background: #111;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background: #4b7bec;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover { background: #3867d6; }
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            margin-top: 10px;
+        }
+        .hashBox {
+            margin-top: 15px;
+            word-wrap: break-word;
+            font-size: 14px;
+            background: #000;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+    </style>
 </head>
 <body>
 
-<h1>ChronaX — Timestamp MVP</h1>
+    <h1>ChronaX — Timestamp MVP</h1>
 
-<button id="connectBtn">Connect Metamask</button>
+    <button id="connectBtn">Connect Metamask</button>
 
-<div class="container">
-    <h3>Upload File (Generate Hash)</h3>
-    <input type="file" id="fileInput">
-    <button id="uploadBtn">Generate Hash + Submit</button>
+    <div class="card">
+        <h3>1. Generate Hash</h3>
+        <input type="file" id="fileInput">
+        <button id="hashBtn">Generate Hash</button>
+        <div id="generatedHash" class="hashBox"></div>
+    </div>
 
-    <p id="fileHash"></p>
-</div>
+    <div class="card">
+        <h3>2. Register Hash On-Chain</h3>
+        <button id="registerBtn">Register Hash</button>
+    </div>
 
-<script src="app.js"></script>
+    <div class="card">
+        <h3>3. Verify Hash</h3>
+        <input type="text" id="verifyInput" placeholder="Enter hash to verify">
+        <button id="verifyBtn">Verify Hash</button>
+        <div id="verifyResult" class="hashBox"></div>
+    </div>
 
+    <script src="app.js"></script>
 </body>
 </html>
