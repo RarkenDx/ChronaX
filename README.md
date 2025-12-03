@@ -88,13 +88,13 @@ POST /api/v1/timestamp
 
 ## 🛡️ Advantages Over Legacy Timestamp Systems
 
-No single blockchain dependency → avoids central points of failure
+**No single blockchain dependency** → avoids central points of failure
 
-Near-zero cost → more accessible than traditional PoE systems
+**Near-zero cost** → more accessible than traditional PoE systems
 
-High accuracy → blockchain time + NTP synchronization
+**High accuracy** → blockchain time + NTP synchronization
 
-Eternal verification → proofs remain valid forever
+**Eternal verification** → proofs remain valid forever
 
 Modern API design instead of static legacy endpoints
 
