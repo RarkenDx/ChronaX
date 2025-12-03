@@ -1,0 +1,11 @@
+{
+  "id": "-",
+  "network": "VM",
+  "deployments": {
+    "0xf8e81D47203A594245E36C48e151709F0C19fBe8": {
+      "date": "2025-12-03T13:11:07.259Z",
+      "contractName": "ChronaXRegistryV2",
+      "implementationAddress": "0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8"
+    }
+  }
+}
