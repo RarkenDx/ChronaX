@@ -51,26 +51,39 @@ ChronaX introduces a **multi-chain, tamper-proof, and cost-efficient** timestamp
 ---
 
 ## 📐 System Architecture (Overview)
-
-User → Hash Generator → ChronaX Validator → Multi-Chain Anchor Engine → Public Proof Layer
-
-- **Hash Generator** — Generates secure SHA-256 fingerprints.  
-- **Validator** — Ensures timestamp validity and prevents replay attacks.  
-- **Anchor Engine** — Broadcasts timestamp proofs to multiple blockchains.  
-- **Public Proof Layer7** — Anyone can verify the proof forever.
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   User Layer    │    │  Relayer Network │    │  Multi-Chain    │
+│                 │    │                  │    │    Anchors      │
+│ - API Submit    │───▶│ - Batch Hash     │───▶│ - Ethereum L1   │
+│ - SDK (Py/JS)   │    │ - Gas Subsidy    │    │ - L2s / LCS     │
+└─────────────────┘    │ - Tx Distribution│    │ - Other EVMs    │
+└──────────────────┘    └─────────────────┘
+│
+▼
+┌─────────────────┐
+│   Proofs API    │
+│                 │
+│ - Tx Hashes     │  ◄── User Verification
+│ - Merkle Paths  │
+│ - Timestamp ID  │
+└─────────────────┘
+```
+> **Note:** Some components (Relayer Network, Proofs API, SDKs, Dashboard) are specified in the whitepaper and roadmap but not yet implemented.
 
 ---
 
-## 🚀 How It Works  
-1. User submits text or file  
-2. ChronaX converts it into a **unique hash**  
-3. The hash is anchored on multiple blockchains  
-4. The user receives:  
-   - Timestamp ID  
-   - Absolute time  
-   - Data hash  
-   - On-chain verification proofs  
-
+## 🧩 How It Works
+1. User submits a document (file/text) to the ChronaX API or CLI (planned).
+2. The content is converted into a **SHA256 hash** off-chain.
+3. The hash is anchored on-chain via the ChronaX smart contract.
+4. The contract emits a `DocumentRegistered` event containing:
+   - `hash` (bytes32)
+   - `registrant` (address)
+   - `timestamp` (uint256, Unix time)
+5. Anyone can verify the proof by:
+   - Recomputing the hash locally, and
+   - Checking the on-chain event for that hash.
 ---
 
 ## 📄 API Example
